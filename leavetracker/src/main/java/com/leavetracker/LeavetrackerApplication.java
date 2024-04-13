@@ -13,7 +13,6 @@ public class LeavetrackerApplication {
 	}
 
 
-
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
