@@ -18,8 +18,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "fk_departmentid")
-    private int departmentId;
 
     @Column(name = "isadmin")
     private int isAdmin;
@@ -39,16 +37,19 @@ public class User {
     @Column(name = "created_datetime")
     private Date createdDateTime;
 
-    // Constructors, getters, and setters
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_departmentid", referencedColumnName = "departmentid")
+    private Department department;
+
 
     public User() {
     }
 
-    public User(String userId, String username, String password, int departmentId, int isAdmin, int isActive, String phoneNumber, String createdUserId, String profilePhoto, Date createdDateTime) {
+    public User(String userId, String username, String password, int isAdmin, int isActive, String phoneNumber, String createdUserId, String profilePhoto, Date createdDateTime) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.departmentId = departmentId;
+
         this.isAdmin = isAdmin;
         this.isActive = isActive;
         this.phoneNumber = phoneNumber;
@@ -83,13 +84,7 @@ public class User {
         this.password = password;
     }
 
-    public int getDepartmentId() {
-        return departmentId;
-    }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
-    }
 
     public int getIsAdmin() {
         return isAdmin;
@@ -137,5 +132,12 @@ public class User {
 
     public void setCreatedDateTime(Date createdDateTime) {
         this.createdDateTime = createdDateTime;
+    }
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

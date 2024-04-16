@@ -96,7 +96,7 @@ public class UserController {
     }
 
     //fetch only required details(id,name,phonenumber,department,password)for profile by using id
-    @GetMapping("/{userId}")
+    @GetMapping("/fetchuser/{userId}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable String userId) {
         try {
             UserDTO userDTO = userService.fetchUserById(userId);

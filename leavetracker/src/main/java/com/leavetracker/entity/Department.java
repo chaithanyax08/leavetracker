@@ -1,21 +1,18 @@
 package com.leavetracker.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "departments")
     public class Department {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "departmentid")
         private int departmentId;
 
         private String departmentName;
-
-
 
         public Department() {
         }

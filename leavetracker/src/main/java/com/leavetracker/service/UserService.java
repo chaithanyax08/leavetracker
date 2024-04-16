@@ -1,6 +1,7 @@
 package com.leavetracker.service;
 
 import com.leavetracker.dto.UserDTO;
+import com.leavetracker.entity.Department;
 import com.leavetracker.entity.User;
 import com.leavetracker.entity.UserRequest;
 import com.leavetracker.repository.UserRepository;
@@ -39,14 +40,9 @@ public class UserService {
         user.setUserId(userRequest.getUserId());
         user.setUsername(userRequest.getUsername());
         user.setPassword(userRequest.getPassword());
-        user.setDepartmentId(userRequest.getDepartmentId());
-
         user.setPhoneNumber(userRequest.getPhoneNumber());
-
-
         String encryptedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPassword);
-
         userRepository.save(user);
     }
 
@@ -75,7 +71,10 @@ public class UserService {
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            return new UserDTO(user.getUserId(), user.getUsername(),  user.getPhoneNumber());
+            Department department = user.getDepartment();
+            String departmentName = (department != null) ? department.getDepartmentName() : null;
+
+            return new UserDTO(user.getUserId(), user.getUsername(),  user.getPhoneNumber() ,departmentName , user.getPassword());
         } else {
             throw new UserNotFoundException("User not found with id: " + userId);
         }
