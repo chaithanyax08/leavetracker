@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "leaveapply")
-public class LeaveLApply {
+public class LeaveApply {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class LeaveLApply {
 
     // Constructors, getters, and setters
 
-    public LeaveLApply(int leaveId, String userId, Date fromDate, Date toDate, int workingDays, int typeId, String reason) {
+    public LeaveApply(int leaveId, String userId, Date fromDate, Date toDate, int workingDays, int typeId, String reason) {
         this.leaveId = leaveId;
         this.userId = userId;
         this.fromDate = fromDate;
@@ -43,7 +43,7 @@ public class LeaveLApply {
         this.reason = reason;
     }
 
-    public LeaveLApply() {
+    public LeaveApply() {
     }
 // Getters and setters
 

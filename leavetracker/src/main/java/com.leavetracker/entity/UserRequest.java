@@ -1,3 +1,6 @@
+
+
+
 package com.leavetracker.entity;
 
 
@@ -25,6 +28,15 @@ public class UserRequest {
 
     public UserRequest() {
     }
+
+    public UserRequest(String userId, String username, int departmentId, String phoneNumber) {
+
+        this.userId = userId;
+        this.username = username;
+
+        this.departmentId = departmentId;
+        this.phoneNumber = phoneNumber;}
+
 
     public String getUserId() {
         return userId;
